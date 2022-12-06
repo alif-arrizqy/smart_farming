@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{%block content%}
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Card Data-->
+        <div class="card-body">
+            <p>
+                <a class="btn btn-primary mb-2" data-toggle="collapse" href="#multiCollapseExample1" role="button"
+                    aria-expanded="false" aria-controls="multiCollapseExample1">Ralis 1</a>
+
+                <button class="btn btn-primary mb-2" type="button" data-toggle="collapse"
+                    data-target="#multiCollapseExample2" aria-expanded="false"
+                    aria-controls="multiCollapseExample2">Ralis 2</button>
+                <button class="btn btn-primary mb-2" type="button" data-toggle="collapse"
+                    data-target="#multiCollapseExample3" aria-expanded="false"
+                    aria-controls="multiCollapseExample3">Ralis 3</button>
+                <button class="btn btn-primary mb-2" type="button" data-toggle="collapse"
+                    data-target="#multiCollapseExample4" aria-expanded="false"
+                    aria-controls="multiCollapseExample4">Ralis 4</button>
+            </p>
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="collapse multi-collapse show" id="multiCollapseExample1">
+                        <div class="border p-1">
+                            <div class="row" style="margin-left: 5px;">
+                                <div class="col-xl-1 mt-2 text-center" style="margin-right: -30px;">
+                                    <canvas id="ralis1-vertical-bar-1"></canvas>
+                                    <p class="card-text alert alert-info mt-1">1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-12 mt-3">
+                    <div class="collapse multi-collapse show" id="multiCollapseExample2">
+                        <div class="border p-1">
+                            <div class="row" style="margin-left: 5px;">
+                                <div class="col-xl-1 mt-2 text-center" style="margin-right: -30px;">
+                                    <canvas id="ralis2-vertical-bar-1"></canvas>
+                                    <p class="card-text alert alert-info mt-1">1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-12 mt-3">
+                    <div class="collapse multi-collapse show" id="multiCollapseExample3">
+                        <div class="border p-1">
+                            <p>ok</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-12 mt-3">
+                    <div class="collapse multi-collapse show" id="multiCollapseExample4">
+                        <div class="border p-1">
+                            <p>ok</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: Card DATA-->
+    </div>
+</main>
+{% endblock %}

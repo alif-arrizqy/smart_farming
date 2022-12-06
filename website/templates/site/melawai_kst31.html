@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{%block content%}
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Card Data-->
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-12 mt-3 text-center">
+                    <div class="card">
+                        <div class="card-header-melawai text-white">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 text-left">
+                                    <span class="h6 card-title">Melawai KST31</span>
+                                </div>
+                                <div class="col-12 col-lg-6 text-right">
+                                    <span class="h6 font-weight-bold card-title">PR-223</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <tr>
+                                        <th rowspan="2" scope="colgroup"></th>
+                                        <th scope="colgroup">kWp</th>
+                                        <th scope="colgroup">kWh</th>
+                                        <th rowspan="2" scope="colgroup">HR</th>
+                                        <th scope="colgroup">kWh</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Cap</th>
+                                        <th scope="col">Today</th>
+                                        <th scope="col">Total</th>
+                                    </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for harvest in range(1) %}
+                                    <tr>
+                                        <td class="font-weight-bold">H{{harvest+1}}</td>
+                                        <td id="cap_h{{harvest}}">getting data..</td>
+                                        <td id="pv_h{{harvest}}">getting data..</td>
+                                        <td id="hr_h{{harvest}}" style="background-color: yellow; width: 5px;">getting data..</td>
+                                        <td id="etotal_h{{harvest}}">getting data..</td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td class="font-weight-bold">Total</td>
+                                        <td class="font-weight-bold" id="cap_total">getting data..</td>
+                                        <td class="font-weight-bold" id="pv_total">getting data..</td>
+                                        <td class="font-weight-bold" style="background-color: yellow" id="hr_total">getting data..</td>
+                                        <td class="font-weight-bold" id="etotal_total">getting data..</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="{{url_for('static', filename='js/melawai_kst31.js')}}"></script>
+    
+<script>
+    const getTanggal = () => {
+        let currentDate = new Date()
+        const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+            "October", "November", "December"
+        ];
+
+        const d = new Date();
+        let monthNow = month[d.getMonth()];
+        let dateTime = `${monthNow} ${currentDate.getDate()}, ${currentDate.getFullYear()}`
+        document.getElementById('dateNow').innerHTML = dateTime
+    }
+    getTanggal()
+</script>
+{% endblock %}

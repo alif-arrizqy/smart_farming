@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{%block content%}
+<main>
+    <div class="container-fluid site-width">
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-12 mt-3 text-center">
+                    <div class="card">
+                        <div class="card-header-melawai text-white">
+                            <div class="col-12 col-lg-6 text-left">
+                                <span class="h4 card-title">Ralis 1</span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-md-center" id="main">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="{{url_for('static', filename='js/ralis.js')}}"></script>
+<script>
+    const {
+        createClient
+    } = supabase
+    const SUPABASE_URL = 'https://hkekzmauiitxzwqxwtxy.supabase.co'
+    const SUPABASE_KEY =
+        `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNTc1NzEwMCwiZXhwIjoxOTUxMzMzMTAwfQ.i7pR90UKtINveMlvB5eiY0Llsu8mdrZspTghjOOCtpc`
+    const _supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+    const renderData = async () => {
+        let {data} = await _supabase.from('rms_realtime').select('*').order('dock_id', {ascending: true})
+        // console.log(data)
+        return data
+    }
+    async function main() {
+        const data = await renderData();
+        render(data)
+    }
+    main()
+    _supabase.from('rms_realtime').on('*', async payload => {
+        const data = await renderData();
+        render(data)
+    })
+    .subscribe()
+</script>
+{%endblock%}

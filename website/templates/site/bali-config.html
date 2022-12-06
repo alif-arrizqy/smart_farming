@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+{%block content%}
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Card Data-->
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-6 col-lg-6 mt-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <span class="h6 font-weight-bold card-title">Inverter 1</span>
+                                </div>
+                                <div class="col-12 col-lg-6 text-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#inverter1Modal">Config</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="inverter1Modal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <form method="POST" action="/config-bali">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Config Inverter 1</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>Max Charge Current</label>
+                                                        <select class="form-control" name="max_charge_current">
+                                                            <option value="10">10</option>
+                                                            <option value="20">20</option>
+                                                            <option value="30">30</option>
+                                                            <option value="40">40</option>
+                                                            <option value="50">50</option>
+                                                            <option value="60">60</option>
+                                                            <option value="70">70</option>
+                                                            <option value="80">80</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Max Discharge Current</label>
+                                                        <select class="form-control" name="max_discharge_current">
+                                                            <option value="30">30</option>
+                                                            <option value="40">40</option>
+                                                            <option value="50">50</option>
+                                                            <option value="60">60</option>
+                                                            <option value="70">70</option>
+                                                            <option value="80">80</option>
+                                                            <option value="90">90</option>
+                                                            <option value="100">100</option>
+                                                            <option value="110">110</option>
+                                                            <option value="120">120</option>
+                                                            <option value="130">130</option>
+                                                            <option value="140">140</option>
+                                                            <option value="150">150</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mode Load</label>
+                                                        <select class="form-control" name="mode_load">
+                                                            <option value="POP00">USB</option>
+                                                            <option value="POP01">SUB</option>
+                                                            <option value="POP02">SBU</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Max Utility Charge Current</label>
+                                                        <select class="form-control" name="max_utility_charge_current">
+                                                            <option value="2">2</option>
+                                                            <option value="10">10</option>
+                                                            <option value="20">20</option>
+                                                            <option value="30">30</option>
+                                                            <option value="40">40</option>
+                                                            <option value="50">50</option>
+                                                            <option value="60">60</option>
+                                                            <option value="70">70</option>
+                                                            <option value="80">80</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Tutup</button>
+                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div class="row text-center justify-content-md-center" id="main">
+                            <div class="col-12 col-lg-6 col-xl-inv mt-1">
+                                <div class="card-body">
+                                    <img src="{{url_for('static', filename='images/charge_current.png')}}"
+                                        style="height: 40%; width: 80%; margin-bottom: 10px;">
+                                    <br>
+                                    <h7 class="card-title font-weight-bold" id="max_charge_current"></h7>
+                                    <p class="card-text">Max Charge</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 col-xl-inv mt-1">
+                                <div class="card-body">
+                                    <img src="{{url_for('static', filename='images/discharge_current.png')}}"
+                                        style="height: 40%; width: 80%; margin-bottom: 10px;">
+                                    <br>
+                                    <h7 class="card-title font-weight-bold" id="max_discharge_current"></h7>
+                                    <p class="card-text">Max Discharge</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 col-xl-inv mt-1">
+                                <div class="card-body">
+                                    <img src="{{url_for('static', filename='images/solar-panel.png')}}"
+                                        style="height: 40%; width: 80%; margin-bottom: 10px;">
+                                    <br>
+                                    <h7 class="card-title font-weight-bold" id="mode_load"></h7>
+                                    <p class="card-text">Mode Load</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 col-xl-inv mt-1">
+                                <div class="card-body">
+                                    <img src="{{url_for('static', filename='images/utility-charge.png')}}"
+                                        style="height: 40%; width: 80%; margin-bottom: 10px;">
+                                    <br>
+                                    <h7 class="card-title font-weight-bold" id="max_utility_charge_current"></h7>
+                                    <p class="card-text">Max Utility Charge</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script type="text/javascript">
+    const {
+        createClient
+    } = supabase
+    const SUPABASE_URL = 'https://rfxzdzibfzniyzzfpoys.supabase.co'
+    const SUPABASE_KEY = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MTI3NzU1OCwiZXhwIjoxOTU2ODUzNTU4fQ.FNd8eoY6O4HJ29WIUDJSTZ1AZ7Dd1tvOx8tlJFY-ibg`
+
+    const render = async () => {
+        const main = document.getElementById("main")
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+        let {
+            data
+        } = await _supabase
+            .from('config_inverter_voltronic')
+            .select('*')
+        const data_fetch = data.map(el => {
+            document.getElementById("max_charge_current").innerHTML = el.max_charge_current + ' A'
+            document.getElementById("max_discharge_current").innerHTML = el.max_discharge_current + ' A'
+            console.log(el.mode_load)
+            if (el.mode_load == "POP00") {
+                document.getElementById("mode_load").innerHTML = 'USB'
+            }
+            if (el.mode_load == "POP01") {
+                document.getElementById("mode_load").innerHTML = 'SUB'
+            }
+            if (el.mode_load == "POP02") {
+                document.getElementById("mode_load").innerHTML = 'SBU'
+            }
+            document.getElementById("max_utility_charge_current").innerHTML = el.max_utility_charge_current + ' A'
+        })
+        const realtime = _supabase.from('config_inverter_voltronic').on('*', payload => {
+                const data = payload.new
+                document.getElementById("max_charge_current").innerHTML = data.max_charge_current + ' A'
+                document.getElementById("max_discharge_current").innerHTML = data.max_discharge_current + ' A'
+                document.getElementById("mode_load").innerHTML = data.mode_load
+                document.getElementById("max_utility_charge_current").innerHTML = data.max_utility_charge_current + ' A'
+            })
+            .subscribe()
+    }
+    render()
+</script>
+{% endblock %}
