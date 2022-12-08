@@ -6,61 +6,19 @@ views = Blueprint("views", __name__)
 
 @views.route("/")
 def index():
-    return render_template("ralis1.html")
+    return render_template("home.html")
 
 
-@views.route("/ralis-2")
+@views.route("/humidity")
 def ralis2():
-    return render_template("ralis2.html")
+    return render_template("data_sensor/humidity.html")
 
 
-@views.route("/chart")
+@views.route("/temperature")
 def chart():
-    return render_template("chart.html")
+    return render_template("data_sensor/temperature.html")
 
 
-@views.route("/relay")
+@views.route("/moisture")
 def relay():
-    return render_template("relay.html")
-
-
-# @views.route("/bali-battery")
-# def bali_battery():
-#     return render_template("site/bali-battery.html")
-
-
-# @views.route("/bali-inverter")
-# def bali_inverter():
-#     return render_template("site/bali-inverter.html")
-
-
-# @views.route("/bali-config", methods=["GET", "POST"])
-# def bali_config():
-#     if request.method == "GET":
-#         return render_template("site/bali-config.html")
-#     elif request.method == "POST":
-#         return core.update_config_inverter1_bali()
-#         # return render_template("site/config-bali.html")
-
-
-@views.route("/melawai")
-def melawai():
-    return render_template("site/melawai.html")
-
-@views.route("/melawai_tj6")
-def melawai_tj6():
-    return render_template("site/melawai_tj6.html")
-
-@views.route("/melawai_kst31")
-def melawai_kst31():
-    return render_template("site/melawai_kst31.html")
-
-
-@views.route("/wonogiri")
-def wonogiri():
-    return render_template("site/wonogiri.html")
-
-
-@views.route("/pmacan")
-def pulau_macan():
-    return render_template("site/pulau_macan.html")
+    return render_template("data_sensor/moisture.html")
