@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request
-from .api import core
 
 views = Blueprint("views", __name__)
 
@@ -10,15 +9,15 @@ def index():
 
 
 @views.route("/humidity")
-def ralis2():
+def humidity():
     return render_template("data_sensor/humidity.html")
 
 
 @views.route("/temperature")
-def chart():
+def temperature():
     return render_template("data_sensor/temperature.html")
 
 
 @views.route("/moisture")
-def relay():
+def moisture():
     return render_template("data_sensor/moisture.html")

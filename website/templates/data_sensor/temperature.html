@@ -10,7 +10,7 @@
                         <div class="card-header-melawai text-white">
                             <div class="row">
                                 <div class="col-12 col-lg-6 text-left">
-                                    <span class="h6 card-title">Humidity Monitoring</span>
+                                    <span class="h6 card-title">Temperature Monitoring</span>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                                         <th scope="col">Fetch Time</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tbl_humidity"></tbody>
+                                <tbody id="tbl_temperature"></tbody>
                             </table>
                         </div>
                     </div>
@@ -59,9 +59,9 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     const render = async () => {
-        const response = await axios.get('http://localhost:5100/api/humidity/all')
+        const response = await axios.get('http://localhost:5100/api/temperature/all')
         const data = response.data.data
-        const table = document.getElementById('tbl_humidity')
+        const table = document.getElementById('tbl_temperature')
         let html = ''
         data.forEach((item, index) => {
             html += `
