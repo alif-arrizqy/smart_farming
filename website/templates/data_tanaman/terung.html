@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+{%block content%}
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Card Data-->
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-6 mt-3 text-center">
+                    <div class="card">
+                        <div class="card-header-melawai text-white">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 text-left">
+                                    <span class="h6 card-title">Humidity Monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="exampleHumidity" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Value</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Fetch Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_humidity"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mt-3 text-center">
+                    <div class="card">
+                        <div class="card-header-melawai text-white">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 text-left">
+                                    <span class="h6 card-title">Temperature Monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="exampleTemperature" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Value</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Fetch Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_temperature"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mt-3 text-center">
+                    <div class="card">
+                        <div class="card-header-melawai text-white">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 text-left">
+                                    <span class="h6 card-title">Moisture Monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="exampleMoisture" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Value</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Fetch Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_moisture"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const renderHumidity = async () => {
+        const response = await axios.get('http://localhost:5100/api/humidity/terung/all')
+        const data = response.data.data
+        const table = document.getElementById('tbl_humidity')
+        let html = ''
+        data.forEach((item, index) => {
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.value}</td>
+                    <td>${item.created_at}</td>
+                    <td>${item.fetch_time}</td>
+                </tr>
+            `
+        })
+        table.innerHTML = html
+    }
+
+    const renderTemperature = async () => {
+        const response = await axios.get('http://localhost:5100/api/temperature/terung/all')
+        const data = response.data.data
+        const table = document.getElementById('tbl_temperature')
+        let html = ''
+        data.forEach((item, index) => {
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.value}</td>
+                    <td>${item.created_at}</td>
+                    <td>${item.fetch_time}</td>
+                </tr>
+            `
+        })
+        table.innerHTML = html
+    }
+    
+    const renderMoisture = async () => {
+        const response = await axios.get('http://localhost:5100/api/moisture/terung/all')
+        const data = response.data.data
+        const table = document.getElementById('tbl_moisture')
+        let html = ''
+        data.forEach((item, index) => {
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.value}</td>
+                    <td>${item.created_at}</td>
+                    <td>${item.fetch_time}</td>
+                </tr>
+            `
+        })
+        table.innerHTML = html
+    }
+
+    renderHumidity()
+    renderTemperature()
+    renderMoisture()
+</script>
+{% endblock %}

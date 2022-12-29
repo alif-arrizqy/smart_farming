@@ -6,6 +6,10 @@
 $(function () {
     "use strict";
 
+    $('#exampleHumidity').DataTable();
+    $('#exampleMoisture').DataTable();
+    $('#exampleTemperature').DataTable();
+    
     $('#example1').DataTable();
     $('#example2').DataTable({
       'paging'      : true,

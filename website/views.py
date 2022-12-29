@@ -8,16 +8,16 @@ def index():
     return render_template("home.html")
 
 
-@views.route("/humidity")
-def humidity():
-    return render_template("data_sensor/humidity.html")
+@views.route("/cabai")
+def cabai():
+    return render_template("data_tanaman/cabai.html")
 
 
-@views.route("/temperature")
-def temperature():
-    return render_template("data_sensor/temperature.html")
+@views.route("/tomat")
+def tomat():
+    return render_template("data_tanaman/tomat.html")
 
 
-@views.route("/moisture")
-def moisture():
-    return render_template("data_sensor/moisture.html")
+@views.route("/terung")
+def terung():
+    return render_template("data_tanaman/terung.html")

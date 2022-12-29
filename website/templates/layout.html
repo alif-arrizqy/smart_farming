@@ -60,27 +60,28 @@
         <div class="site-width">
             <!-- START: Menu-->
             <ul id="side-menu" class="sidebar-menu">
-                <li class="dropdown"><a href="#"><i class="iconify" data-icon="material-symbols:home"
-                            data-width="30" data-height="18"></i> Home</a>
+                <li class="dropdown"><a href="#"><i class="iconify" data-icon="material-symbols:home" data-width="30"
+                            data-height="18"></i> Home</a>
                     <ul>
                         <li><a href="/"><i class="iconify" data-icon="eos-icons:monitoring" data-width="30"
                                     data-height="18"></i>Monitoring</a>
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"><i class="iconify" data-icon="material-symbols:book-sharp" data-width="30"
-                            data-height="18"></i> Data Sensor</a>
+                <li class="dropdown"><a href="#"><i class="iconify" data-icon="material-symbols:book-sharp"
+                            data-width="30" data-height="18"></i> Data Tanaman</a>
                     <ul>
-                        <li><a href="#"><i class="iconify" data-icon="material-symbols:humidity-high-outline" data-width="30"
-                                    data-height="18"></i>Humidity</a>
-                                    <ul>
-                                        <li>
-                                            <a href="/humidity"><i class="iconify" data-icon="mdi:water-percent" data-width="30"
-                                                data-height="18"></i>Humidity</a>
-                                        </li>
-                                    </ul>
+                        <li><a href="/cabai"><i class="iconify" data-icon="material-symbols:potted-plant-outline"
+                                    data-width="30" data-height="18"></i> Cabai</a>
+                        </li>
+                        <li><a href="/tomat"><i class="iconify" data-icon="material-symbols:potted-plant-outline"
+                                    data-width="30" data-height="18"></i> Tomat</a>
+                        </li>
+                        <li><a href="/terung"><i class="iconify" data-icon="material-symbols:potted-plant-outline"
+                                    data-width="30" data-height="18"></i> Terung</a>
                         </li>
                     </ul>
+
                 </li>
             </ul>
             <!-- END: Menu-->
@@ -123,7 +124,9 @@
     {% block js %}
     <!-- START: Template JS-->
     <script src="{{url_for('static', filename='vendors/jquery/jquery-3.3.1.min.js')}}"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{url_for('static', filename='vendors/slimscroll/jquery.slimscroll.min.js')}}"></script>
     <script src="{{url_for('static', filename='vendors/datatable/datatables.min.js')}}"></script>
