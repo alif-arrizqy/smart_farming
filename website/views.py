@@ -8,16 +8,6 @@ def index():
     return render_template("home.html")
 
 
-@views.route("/cabai")
-def cabai():
-    return render_template("data_tanaman/cabai.html")
-
-
-@views.route("/tomat")
-def tomat():
-    return render_template("data_tanaman/tomat.html")
-
-
-@views.route("/terung")
-def terung():
-    return render_template("data_tanaman/terung.html")
+@views.route("/tanaman")
+def tanaman():
+    return render_template("data_tanaman/tanaman.html")

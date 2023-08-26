@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{%block content%}
+<main>
+    <div class="container-fluid site-width">
+        <!-- START: Card Data-->
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-12 mt-3 text-center">
+                    <div class="card">
+                        <div class="card-header-melawai text-white">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 text-left">
+                                    <span class="h6 card-title">Monitoring Tanaman</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="exampleHumidity" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Temperature</th>
+                                        <th scope="col">Moisture</th>
+                                        <th scope="col">Fuzzy Status</th>
+                                        <th scope="col">Created At</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_tanaman"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const renderTanaman = async () => {
+        const response = await axios.get('http://localhost:5100/api/tanaman/all')
+        const data = response.data.data
+        const table = document.getElementById('tbl_tanaman')
+        let html = ''
+        data.forEach((item, index) => {
+            html += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.temperature}</td>
+                    <td>${item.moisture}</td>
+                    <td>${item.fuzzy}</td>
+                    <td>${item.created_at}</td>
+                </tr>
+            `
+        })
+        table.innerHTML = html
+      }
+    renderTanaman()
+</script>
+{% endblock %}
